@@ -1,0 +1,43 @@
+{%load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css'%}">
+    <style>
+    </style>
+</head>
+<!-- navigation -->
+<div class="nav_body">
+
+    <div class="nav_logo">
+        <a href="{% url 'main' %}">
+            <img src="{% static 'logo3.png' %}" style="width: 100px; height: 100px;" id="logo">
+        </a>
+        <!--<nav class="login">
+            <a href="#" class="login">로그인</a>
+            <a href="#" class="login">회원가입</a>
+        </nav>-->
+    </div>
+    <div class="nav_container">
+        <div class="nav_container_title_typo">
+            장소
+        </div>
+        <div class="nav_container_bar"></div>
+        <div class="nav_container_element_typo nav_container_element_typo_first">
+            <a href="{% url 'recommend' %}">추천</a>
+        </div>
+        <div class="nav_container_element_typo nav_container_community_typo_point">
+            <a href="{% url 'showattractions' %}">장소 찾기</a>
+        </div>
+        <div class="nav_container_element_typo ">
+            <a href="{% url 'plan' %}">여행 계획</a>
+        </div>
+        <div class="nav_container_element_typo">
+            <a href="{% url 'bookmark' %}">즐겨 찾기</a>
+        </div>
+        <div class="nav_container_community_typo">
+            커뮤니티
+        </div>
+    </div>
+</div>
+{% block contents %}
+
+{%endblock%}

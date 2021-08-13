@@ -1,0 +1,437 @@
+{% load static %}
+<html>
+
+<head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css'%}">
+
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+        .wrap * {padding: 0;margin: 0;}
+        .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+        .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+        .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+        .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+        .info .close:hover {cursor: pointer;}
+        .info .body {position: relative;overflow: hidden;}
+        .info .desc {position: relative;margin: 13px 0 0 50px;height: 75px;}
+        .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+        .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+        .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+        .info .link {color: #5085BB;}
+
+        /* font-family: 'Noto Sans KR', sans-serif !important;
+font-family: 'Open Sans', sans-serif !important; */
+
+
+        
+        .nav_body {
+            width: 121px;
+            height: 100%;
+            margin: 42px 0 0 50px !important;
+            padding: 0 !important;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav_logo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .nav_container {
+            width: 121px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav_container_title_typo {
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 27px;
+            color: #000000;
+            margin-top: 59px;
+        }
+
+        .nav_container_bar {
+            width: 121px;
+            height: 0;
+            border: 1px solid #dddddd;
+            margin-top: 11px;
+        }
+
+        .nav_container_element_typo {
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+            color: #c2c2c2 !important; 
+            margin-top: 33px;
+        }
+
+        .nav_container_element_typo_first {
+            margin-top: 23px !important;
+        }
+
+        .nav_container_community_typo {
+            font-family: Noto Sans;
+            font-style: normal;
+            font-size: 20px;
+            line-height: 27px;
+            color: #979797 !important;
+            margin-top: 46px;
+        }
+
+        .nav_container_community_typo_point {
+            color: #fe7c54 !important;
+        }
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 900px;
+            font-family: 'Noto Sans KR', sans-serif;
+            position: relative;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            display: flex;
+        }
+
+        .login_container {
+            display: flex;
+            position: absolute;
+            top: 99px;
+            left: 1240px;
+        }
+
+        .login_typo {
+            width: 80px;
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19px;
+            color: #333333;
+            margin-right: 18px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .recent_body {
+            margin-top: 50px;
+            padding: 0 0 0 20px;
+            background-color: rgba(254, 124, 84, 0.1);
+            width: 220px;
+            height: 150px;
+            border-radius: 10px;
+            display: flex;
+        }
+
+        #page-wrapper {
+            display: flex;
+        }
+
+        #content {
+            margin: 180px 0 0 152px;
+        }
+
+        select {
+            width: 150px;
+            padding: 0.7em;
+            border: 1px none;
+            border-radius: 50px;
+            background: url('vector.png') no-repeat 95% 50%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        .board_typo {
+            font-size: 23px;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        #do-select {
+            background-color: rgba(254, 124, 84, 0.3);
+            margin-right: 15px;
+        }
+
+        #city-select {
+            background-color: rgba(254, 124, 84, 0.3);
+        }
+
+        #recent {
+            font-size: 17px;
+        }
+
+        #search-engine {
+            background-image: url('search_btn.png');
+            background-repeat: no-repeat;
+            background-position: 95% 50%;
+            background-color: rgba(254, 124, 84, 0.7);
+            margin-right: 15px;
+            width: 300px;
+            padding: 0.7em;
+            border: 1px none;
+            border-radius: 50px;
+        }
+
+        #search-engine placeholder {
+            color: #ffffff;
+        }
+
+        #search {
+            color: #FE7C54;
+            font-size: 14px;
+            border: 0;
+            outline: 0;
+            background: none;
+            margin-left: 7px;
+        }
+
+        button {
+            color: #FE7C54;
+            border: 0;
+            outline: 0;
+            background: none;
+        }
+
+        .map-content {
+            margin-top: 10px;
+        }
+
+        #map {
+            width: 1000px;
+            height: 570px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            text-align: center;
+            background-color: #6F6F6F;
+        }
+
+        #footer-message {
+            color: white;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 전체를 감싸는 태그 -->
+    <div id="page-wrapper">
+
+        <!-- navigation -->
+        <div class="nav_body">
+
+            <div class="nav_logo">
+                <a href="{% url 'recommend' %}">
+                    <img src="{% static 'logo3.png' %}" style="width: 100px; height: 100px;" id="logo">
+                </a>
+            </div>
+            <div class="nav_container">
+                <div class="nav_container_title_typo">
+                    장소
+                </div>
+                <div class="nav_container_bar"></div>
+                <div class="nav_container_element_typo nav_container_element_typo_first ">
+                    <a href="{% url 'recommend' %}">추천</a>
+                </div>
+                <div class="nav_container_element_typo nav_container_community_typo_point">
+                    <a href="{% url 'showattractions' %}" style="color: #fe7c54">장소 찾기</a>
+                </div>
+                <div class="nav_container_element_typo">
+                    <a href="{% url 'plan' %}">여행 계획</a>
+                </div>
+                <div class="nav_container_element_typo">
+                    <a href="{% url 'bookmark' %}">즐겨 찾기</a>
+                </div>
+                <div class="nav_container_community_typo">
+                    커뮤니티
+                </div>
+            </div>
+
+            <div class="recent_body">
+                <div class="recent_main">
+                    <p>최근 본 장소</p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="login_container">
+            <div class="login_typo">
+                <a href="{% url 'logout' %}">로그아웃</a>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div id="content">
+
+            <div class="board_typo">
+                장소 찾기
+            </div>
+
+            <div class="search">
+                <!--검색부분-->
+                <!--검색창-->
+                <form action="/search">
+                    <input type="text" placeholder="키워드" id="search-engine" name="key">   
+                <!--시/도선택-->
+                    <select name="do" id="do-select">
+                        <option>도시</option>
+                        <option value="서울">서울</option>
+                        <!--<option value="경기">경기</option>-->
+                    </select>
+                <!--시/군/구 선택-->
+                    <select name="city" id="city-select">
+                        <option>지역</option>
+                        <!--<option value="종로구">종로구</option>
+                        <option value="중구">중구</option>
+                        <option value="성동구">성동구</option>
+                        <option value="광진구">광진구</option>
+                        <option value="동대문구">동대문구</option>
+                        <option value="중랑구">중랑구</option>
+                        <option value="성북구">성북구</option>
+                        <option value="강북구">강북구</option>
+                        <option value="도봉구">도봉구</option>
+                        <option value="노원구">노원구</option>
+                        <option value="은평구">은평구</option>
+                        <option value="서대문구">서대문구</option>
+                        <option value="강동구">강동구</option>
+                        <option value="양천구">양천구</option>
+                        <option value="강서구">강서구</option>
+                        <option value="구로구">구로구</option>
+                        <option value="금천구">금천구</option>
+                        <option value="영등포구">영등포구</option>
+                        <option value="동작구">동작구</option>
+                        <option value="관악구">관악구</option>
+                        <option value="서초구">서초구</option>-->
+                        <option value="마포구">마포구</option>
+                        <option value="용산구">용산구</option>
+                        <option value="강남구">강남구</option>
+                        <option value="송파구">송파구</option>
+                    </select>
+                <!--필터 적용 버튼-->
+                    <input type="submit" value="검색" id="search">
+                </form>
+            </div>
+
+            <!--지도-->
+            <div class="map-content">
+                <div id="map"></div>
+                <script type="text/javascript"
+                    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06f9761da60ee12828024f9a49b10eb3"></script>
+                <script>
+                    var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+                    mapOption = { 
+                        center: new kakao.maps.LatLng(37.55837256072419, 126.97708149909128), // 지도의 중심좌표
+                        level:8// 지도의 확대 레벨
+                    };
+                
+                var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                var attractions = JSON.parse("{{ attractionJson|escapejs }}");
+                console.log(attractions)
+                
+                // 마커를 표시할 위치와 title 객체 배열입니다 
+                var positions = [];
+                for (var i = 0; i < Object.keys(attractions).length; i++) {
+                var content = {
+                    title: attractions[i].title,
+                    latlng: new kakao.maps.LatLng(attractions[i].mapy, attractions[i].mapx),
+                    addr1: attractions[i].addr1,
+                    tel: attractions[i].tel,
+                }
+                positions.push(content);
+                };
+                console.log(positions);
+                 
+               
+                  
+                for(let i=0; i < positions.length; i++){
+                    var data = positions[i];
+                    displayMarker(data);
+                }
+                // 지도에 마커를 표시하는 함수입니다    
+                function displayMarker(data) { 
+                    
+                    var marker = new kakao.maps.Marker({
+                        map: map,
+                        position: data.latlng
+                    });
+                  
+                    var overlay = new kakao.maps.CustomOverlay({
+                        content : '<div class="wrap">' + 
+                            '    <div class="info">' + 
+                            '        <div class="title">' + 
+                                      data.title + 
+                            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+                            '        </div>' + 
+                            '        <div class="body">' + 
+                            '           </div>' + 
+                            '            <div class="desc">' + 
+                            '                <div class="ellipsis">'+data.addr1+'</div>' + 
+                            '                <div class="jibun ellipsis">'+ data.tel + 
+                            '            </div>' + 
+                            '        </div>' + 
+                            '    </div>' +    
+                            '</div>',
+                        map: map,
+                        position: marker.getPosition(),
+                        xAnchor: 0.5,
+                        yAnchor: 1,
+                        zIndex: 3
+                    });
+                
+                    overlay.setMap(null)
+                    kakao.maps.event.addListener(marker, 'click', function() {
+                        $("#recent_place").load(location.href + " #recent_place");
+                        overlay.setMap(map);
+                        //$('#recent_place').load(location.href+" #recent_place>*","");
+                        sessionStorage.setItem("search",data.title);
+                        console.log(data.title);
+                        $(function(){
+                            $(".recent_main").html("<p>최근 본 장소</p>"+""+data.title+"<br>"+data.addr1+"");
+                        });
+                    });
+                    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                        overlay.setMap(null)
+                    });
+                }
+                </script>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer-div">
+            <p id="footer-message">2021 ANIWHERE from SSWU</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

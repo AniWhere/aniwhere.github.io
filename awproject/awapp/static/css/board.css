@@ -1,0 +1,127 @@
+
+        @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        /* font-family: 'Noto Sans KR', sans-serif !important;
+font-family: 'Open Sans', sans-serif !important; */
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            position: relative;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            display: flex;
+        }
+
+        .login_container {
+            display: flex;
+            position: absolute;
+            top: 99px;
+            left: 1240px;
+        }
+
+        .login_typo {
+            width: 80px;
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19px;
+            color: #333333;
+            margin-right: 18px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .recent_body {
+            margin-top: 50px;
+            padding: 0 0 0 20px;
+            background-color: rgba(254, 124, 84, 0.1);
+            width: 220px;
+            height: 150px;
+            border-radius: 10px;
+            display: flex;
+        }
+
+        #page-wrapper {
+            display: flex;
+        }
+
+        #content {
+            margin: 180px 0 0 160px;
+        }
+
+        .board_typo {
+            font-size: 26px;
+        }
+
+        select {
+            width: 150px;
+            padding: 0.7em;
+            border: 1px none;
+            border-radius: 50px;
+            background: url('vector.png') no-repeat 95% 50%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        #do-select {
+            background-color: rgba(254, 124, 84, 0.3);
+            margin-right: 15px;
+        }
+
+        #city-select {
+            background-color: rgba(254, 124, 84, 0.3);
+        }
+
+
+        #search-engine {
+            background-image: url('search_btn.png');
+            background-repeat: no-repeat;
+            background-position: 95% 50%;
+            background-color: rgba(254, 124, 84, 0.7);
+            margin-right: 15px;
+            width: 300px;
+            padding: 0.7em;
+            border: 1px none;
+            border-radius: 50px;
+        }
+
+        button {
+            color: #FE7C54;
+            border: 0;
+            outline: 0;
+            background: none;
+        }
+
+        .map-content {
+            margin-top: 10px;
+        }
+
+        #map {
+            width: 1000px;
+            height: 500px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            text-align: center;
+            background-color: #6F6F6F;
+        }
+
+        #footer-message {
+            color: white;
+            font-size: 10px;
+        }

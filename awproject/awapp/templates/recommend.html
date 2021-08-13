@@ -1,0 +1,376 @@
+{% load static %}
+
+<html>
+
+<head>
+  <title>추천</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/recommend.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css'%}">
+  <style>
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-family: 'Noto Sans KR', sans-serif;
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .nav {
+      width: 121px !important;
+      height: 100% !important;
+    }
+
+    .login_container {
+      display: flex;
+      position: absolute;
+      top: 99px;
+      left: 1240px;
+    }
+
+    .login_typo {
+      width: 80px;
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: #333333;
+      margin-right: 18px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .recommend_body {
+      width: 100%;
+      display: flex;
+    }
+
+    .recommend_container {
+      width: 1070px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 169px;
+      margin-left: 153px;
+      position: relative;
+    }
+
+    .recommend_container_title_typo {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: normal;
+      font-size: 23px;
+    }
+
+    .recommend_container_sub_title_container {
+      width: 100%;
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .recommend_container_sub_title_typo {
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 17px;
+      line-height: 23px;
+      color: #000000;
+    }
+
+    .recommend_container_sub_title_swiper {
+      width: 40px;
+      height: 20px;
+      object-fit: cover;
+    }
+
+    .recommend_conatiner_card_container {
+      width: 1100px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .recommend_conatiner_card_wrapper {
+      width: 244px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      margin-right: 30px;
+      margin-top: 17px;
+    }
+
+    .recommend_container_card_img {
+      width: 244px;
+      height: 157px;
+      background: #0003;
+      border-radius: 10px;
+    }
+
+    .recommend_container_card_title_conatiner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 13px;
+    }
+
+    .recommend_container_card_title_typo {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #000000;
+    }
+
+    .recommend_container_title_img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
+
+    .recommend_container_card_description_typo {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #000000;
+      margin-top: 10px;
+    }
+
+    .recommend_container_popular_card_container {
+      display: flex;
+      margin-top: 19px;
+    }
+
+    .recommend_container_popular_card_wrapper {
+      width: 172px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 52px;
+    }
+
+    .recommend_container_popular_card_img {
+      width: 172px;
+      height: 172px;
+      border-radius: 90px;
+      background: #0003;
+    }
+
+    .recommend_container_popular_card_typo {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #000000;
+      margin-top: 19px;
+    }
+
+    .recommend_container_margin {
+      margin-top: 100px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 35px;
+      text-align: center;
+      background-color: #6F6F6F;
+    }
+
+    #footer-message {
+      color: white;
+      font-size: 10px;
+    }
+
+    #star-five {
+      margin: 50px 0;
+      position: relative;
+      display: block;
+      color: black;
+      width: 0px;
+      height: 0px;
+      border-right: 20x solid transparent;
+      border-bottom: 70px solid black;
+      border-left: 100px solid transparent;
+      transform: rotate(35deg);
+    }
+
+    #star-five:before {
+      border-bottom: 80px solid black;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: -45px;
+      left: -65px;
+      display: block;
+      content: '';
+      transform: rotate(-35deg);
+    }
+
+    #star-five:after {
+      position: absolute;
+      display: block;
+      color: black;
+      top: 3px;
+      left: -105px;
+      width: 0px;
+      height: 0px;
+      border-right: 100px solid transparent;
+      border-bottom: 70px solid black;
+      border-left: 100px solid transparent;
+      transform: rotate(-70deg);
+      content: '';
+    }
+
+    #star_btn {
+      background-color: transparent;
+      border: transparent
+    }
+  </style>
+</head>
+
+<body>
+  <div class="recommend_body">
+    <div class="nav_body">
+      <div class="nav_logo">
+        <a href="{% url 'recommend' %}">
+            <img src="{% static 'logo3.png' %}" style="width: 100px; height: 100px;" id="logo">
+        </a>
+    </div>
+      <div class="nav_container">
+        <div class="nav_container_title_typo">
+          장소
+        </div>
+        <div class="nav_container_bar"></div>
+        <div class="nav_container_element_typo nav_container_element_typo_first ">
+          <a href="{% url 'recommend' %}" style="color: #fe7c54">추천</a>
+        </div>
+        <div class="nav_container_element_typo nav_container_community_typo_point">
+          <a href="{% url 'showattractions' %}">장소 찾기</a>
+        </div>
+        <div class="nav_container_element_typo">
+          <a href="{% url 'plan' %}">여행 계획</a>
+        </div>
+        <div class="nav_container_element_typo">
+          <a href="{% url 'bookmark' %}">즐겨 찾기</a>
+        </div>
+        <div class="nav_container_community_typo">
+          커뮤니티
+        </div>
+      </div>
+    </div>
+    <div class="login_container">
+      <div class="login_typo">
+        <a href="{% url 'logout' %}">로그아웃</a>
+      </div>
+      
+    </div>
+    <div class="recommend_container">
+      <div class="recommend_container_title_typo">
+        추천
+      </div>
+      <div class="recommend_container_sub_title_container">
+        <div class="recommend_container_sub_title_typo">
+          반려동물과 같이 가기 좋은 가평 펜션
+        </div>
+        
+      </div>
+
+      <!-- 카드 -->
+      <div class="recommend_conatiner_card_container">
+        {% for bookmark in bookmarks.all %}
+        <div class="recommend_conatiner_card_wrapper">
+          <img src="{{bookmark.image.url}}" class="recommend_container_card_img">
+          <div class="recommend_container_card_title_conatiner">
+            <div class="recommend_container_card_title_typo">
+              {{bookmark.name}}
+            </div>
+            {%if bookmark.star is 0 %}
+            <div class="recommend_container_title_img">
+              <form action="{%url 'check' bookmark.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" id="star_btn"><img src="{% static 'recommend_starInactive.png' %}" width="20"
+                    height="20"></button>
+              </form>
+            </div>
+            {% endif %}
+            {%if bookmark.star is 1 %}
+            <div class="recommend_container_title_img">
+              <form action="{%url 'check' bookmark.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" id="star_btn"><img src="{% static 'recommend_starClicked.png' %}" width="20"
+                    height="20"></button>
+              </form>
+            </div>
+            {% endif %}
+
+          </div>
+          <div class="recommend_container_card_description_typo">
+            {{bookmark.description}}
+          </div>
+        </div>
+        {% endfor %}
+        <div class="recommend_container_sub_title_typo">
+          인기 지역 보기
+        </div>
+
+        <div class="recommend_container_popular_card_container">
+          <div class="recommend_container_popular_card_wrapper">
+            <div class="recommend_container_popular_card_img"><img src="{% static 'recommend_Busan.png' %}" width="172">
+            </div>
+            <div class="recommend_container_popular_card_typo">
+              부산
+            </div>
+          </div>
+          <div class="recommend_container_popular_card_wrapper">
+            <div class="recommend_container_popular_card_img"><img src="{% static 'recommend_Sokcho.png' %}"
+                width="172"></div>
+            <div class="recommend_container_popular_card_typo">
+              속초
+            </div>
+          </div>
+          <div class="recommend_container_popular_card_wrapper">
+            <div class="recommend_container_popular_card_img"><img src="{% static 'recommend_Gangneung.png' %}"
+                width="172"></div>
+            <div class="recommend_container_popular_card_typo">
+              강릉
+            </div>
+          </div>
+          <div class="recommend_container_popular_card_wrapper">
+            <div class="recommend_container_popular_card_img"><img src="{% static 'recommend_Yeosu.png' %}" width="172">
+            </div>
+            <div class="recommend_container_popular_card_typo">
+              여수
+            </div>
+          </div>
+          <div class="recommend_container_popular_card_wrapper">
+            <div class="recommend_container_popular_card_img"><img src="{% static 'recommend_Yeosu-1.png' %}"
+                width="172"></div>
+            <div class="recommend_container_popular_card_typo">
+              제주
+            </div>
+          </div>
+        </div>
+        <div class="recommend_container_margin"></div>
+
+
+      </div>
+    </div>
+
+    <footer>
+      <div id="footer-div">
+        <p id="footer-message">2021 ANIWHERE from SSWU</p>
+      </div>
+    </footer>
+
+</body>
+
+</html>

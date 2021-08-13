@@ -1,0 +1,227 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
+
+    <title>Aniwhere</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 100%;
+            position: relative;
+            font-family: 'Noto Sans KR', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .page-wrapper {
+            padding-bottom: 10px;
+        }
+
+        .main-desc {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            height: 60%;
+        }
+
+        .login_container {
+            display: flex;
+            margin: 15px 35px 60px 0;
+        }
+
+        .login_typo {
+            width: 80px;
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19px;
+            color: #FE7C54;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #logo {
+            width: 160px;
+            height: 148px;
+            margin-top: 90px;
+        }
+
+        #title {
+            font-size: 50px;
+            margin-bottom: 30px;
+            margin-top: -20px;
+        }
+
+        #subtitle {
+            color: #FE7C54;
+            font-size: 18px;
+            margin-top: -15px;
+            margin-bottom: -1px;
+        }
+
+        .start_btn {
+            margin-top: 40px;
+            width: 243px;
+            height: 59px;
+        }
+
+        .desc {
+            width: 253px;
+            height: 104px;
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .black-container {
+            width: 100%;
+            height: 40%;
+            background-color: #333333;
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            padding: 50px 0;
+        }
+
+        #recommend {
+            float: left;
+            width: 20%;
+        }
+
+        #search {
+            float: left;
+            width: 20%;
+        }
+
+        #plan {
+            float: left;
+            width: 20%;
+        }
+
+        #star {
+            float: left;
+            width: 20%;
+        }
+
+        #community {
+            float: left;
+            width: 20%;
+        }
+
+        #black {
+            width: 70px;
+            height: 70px;
+        }
+
+        h4 {
+            font-size: 17px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35px;
+            text-align: center;
+            background-color: #6F6F6F;
+        }
+
+        #footer-message {
+            color: white;
+            font-size: 10px;
+        }
+        a{
+            text-decoration:none 
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 전체를 감싸는 태그 -->
+    <div class="page-wrapper">
+
+        <div class="main-desc">
+            <img src="{% static 'logo3.png' %}" alt="logo" id="logo">
+            <h1 id="title">Aniwhere</h1>
+            <p id="subtitle">내 반려동물과 함께하는 여행을 위해</p>
+            <p id="desc">ANIWHERE은 반려동물을 키우는 가족들이
+                <br>조금 더 편리하게 여행을 계획하고
+                <br>일상에서 소소한 행복을 느끼실 수 있도록
+                <br>도움을 드리고자 제작하게 되었습니다.
+            </p>
+
+            <div class="start_btn">
+                <a href="{%url 'login'%}"><img src="{% static 'main_startBtn.png' %}" alt=""></a>
+            </div>
+
+            <div class="login_container">
+                <div class="login_typo">
+                    <a href="{%url 'signup'%}" style="color:black">회원가입</a> 
+                </div>
+            </div>
+        </div>
+
+        <div class="black-container">
+
+            <div id="recommend">
+                <img src="{% static 'main_icon1.png' %}" alt="main_icon1" id="black">
+                <h4>추천</h4>
+                <p>어디를 가야할 지 모르겠을 땐<br>저희가 추천해드릴게요 !
+                    <br>인기 지역, 카페 등을 한 곳에서<br>모아서 보여드려요
+                </p>
+            </div>
+            <div id="search">
+                <img src="{% static 'main_icon2.png' %}" alt="main_icon2" id="black">
+                <h4>검색</h4>
+                <p>가고 싶은 지역과 공간을 <br>직접 검색해서 찾아보세요 !
+                    <br>지역과 공간을 원하는대로 선택하고, <br>해당되는 곳들을 지도 위에서 <br>확인해보세요</p>
+            </div>
+            <div id="plan">
+                <img src="{% static 'main_icon3.png' %}" alt="main_icon3" id="black">
+                <h4>여행 계획</h4>
+                <p>반려동물과의 여행 계획을 직접 세우고 <br>관리해보세요 ! <br>앞으로의 여행 계획을 직접 세워 관리하고,
+                    <br>이미 갔다 온 여행은 일정을 다시 보며 <br>추억을 회상해보세요!</p>
+            </div>
+            <div id="star">
+                <img src="{% static 'main_icon4.png' %}" alt="main_icon4" id="black">
+                <h4>즐겨찾기</h4>
+                <p>내 마음에 드는 장소를 모아보세요 ! <br>기억해두고 싶은 장소들을 <br>즐겨찾기에 모아서 확인해보세요
+                    <br>잊어버리지 않도록 보관해주고 <br>언제든 계획에 추가할 수 있어요</p>
+            </div>
+            <div id="community">
+                <img src="{% static 'main_icon5.png' %}" alt="main_icon5" id="black">
+                <h4>커뮤니티</h4>
+                <p>다양한 여행 정보를 함께 공유해요 ! <br>다른 반려가족들이 선택한 장소는 <br>어디인지, 어떤 일정을 보냈는지
+                    <br>함께 이야기해보세요. <br>여러 장소에 대한 후기도 <br>공유할 수 있습니다.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div id="footer-div">
+            <p id="footer-message">2021 ANIWHERE from SSWU</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

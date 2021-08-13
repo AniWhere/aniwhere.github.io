@@ -1,0 +1,361 @@
+{% load static %}
+
+<html>
+
+<head>
+  <title>여행 계획</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/plan.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css'%}">
+  <style>
+    @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      position: relative;
+    }
+
+    .nav {
+      width: 121px !important;
+      height: 100% !important;
+    }
+
+    .login_container {
+      display: flex;
+      position: absolute;
+      top: 99px;
+      left: 1240px;
+    }
+
+    .login_typo {
+      width: 80px;
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: #333333;
+      margin-right: 18px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .travel_plan_body {
+      width: 100%;
+      display: flex;
+    }
+
+    .travel_plan_container {
+      width: 1070px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 169px;
+      margin-left: 153px;
+      position: relative;
+    }
+
+    .travel_plan_container_title_typo {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: normal;
+      font-size: 23px;
+    }
+
+    .travel_plan_container_sub_title_typo {
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 17px;
+      line-height: 23px;
+      color: #000000;
+      margin-top: 14px;
+    }
+
+    .travel_plan_container_add_button {
+      width: 133px;
+      height: 33px;
+      background: rgba(254, 124, 84, 0.7);
+      border-radius: 29.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 44px;
+      right: 0;
+    }
+
+    .travel_plan_container_add_button_typo {
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .travel_plan_conatiner_card_container {
+      width: 1100px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .travel_plan_conatiner_card_wrapper {
+      width: 244px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      margin-right: 30px;
+      margin-top: 17px;
+    }
+
+    .recommend_container_card_img {
+      width: 244px;
+      height: 157px;
+      background: #0003;
+      border-radius: 10px;
+    }
+
+    .travel_plan_container_card_title_conatiner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 13px;
+    }
+
+    .travel_plan_container_card_title_typo {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #000000;
+    }
+
+    .travel_plan_container_title_img {
+      width: 20px;
+      height: 20px;
+
+    }
+
+    .travel_plan_container_card_description_typo {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #000000;
+      margin-top: 10px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 35px;
+      text-align: center;
+      background-color: #6F6F6F;
+    }
+
+    #footer-message {
+      color: white;
+      font-size: 10px;
+    }
+  </style>
+
+<body>
+  <div class="travel_plan_body">
+    <div class="nav_body">
+      <div class="nav_logo">
+        <a href="{% url 'recommend' %}">
+            <img src="{% static 'logo3.png' %}" style="width: 100px; height: 100px;" id="logo">
+        </a>
+    </div>
+      <div class="nav_container">
+        <div class="nav_container_title_typo">
+          장소
+        </div>
+        <div class="nav_container_bar"></div>
+        <div class="nav_container_element_typo nav_container_element_typo_first ">
+          <a href="{% url 'recommend' %}">추천</a>
+        </div>
+        <div class="nav_container_element_typo nav_container_community_typo_point">
+          <a href="{% url 'showattractions' %}">장소 찾기</a>
+        </div>
+        <div class="nav_container_element_typo">
+          <a href="{% url 'plan' %}" style="color: #fe7c54">여행 계획</a>
+        </div>
+        <div class="nav_container_element_typo">
+          <a href="{% url 'bookmark' %}">즐겨 찾기</a>
+        </div>
+        <div class="nav_container_community_typo">
+          커뮤니티
+        </div>
+      </div>
+    </div>
+    <div class="login_container">
+      <div class="login_typo">
+        <a href="{% url 'logout' %}">로그아웃</a>
+      </div>
+     
+    </div>
+    <div class="travel_plan_container">
+      <div class="travel_plan_container_title_typo">
+        여행 계획
+      </div>
+      <div class="travel_plan_container_sub_title_typo">
+        내 여행 일정
+      </div>
+      <div class="travel_plan_container_add_button">
+        <div class="travel_plan_container_add_button_typo">
+          새 계획 세우기
+        </div>
+      </div>
+
+      <!-- 카드 -->
+
+      <div class="travel_plan_conatiner_card_container">
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_my_1.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              종강 후 여유로운 제주살이
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.02.04 | 1박 2일 | 제주도
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_my_2.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              첫 가평 여행
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.05.25 | 1박 2일 | 가평
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_my_3.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+                하동으로 가자
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.07.09 | 1박 2일 | 하동
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_my_4.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              남해로 가자
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.10.12 | 1박 2일 | 남해
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_my_6.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              방울이와 기차 타고 여수
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.12.16 | 2박 3일 | 여수
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_my_5.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              조방울 당일치기 군산
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2020.05.20 | 당일치기 | 군산
+          </div>
+        </div>
+
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_my_7.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              여유롭게 태안에서
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2020.06.10 | 1박 2일 | 태안
+          </div>
+        </div>
+      </div>
+
+      <div class="travel_plan_container_sub_title_typo" style="margin-top: 115px">
+        다른 반려가족의 여행 일정
+      </div>
+
+      <div class="travel_plan_conatiner_card_container">
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_other_1.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              요르 여수가 좋아?
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.04.13 | 1박 2일 | 여수
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_other_2.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              제주도로 떠나자
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.08.08 | 2박 3일 | 제주도
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_other_3.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              대박이와 함께하는 제주도 살이
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.10.28 | 1박 2일 | 가평
+          </div>
+        </div>
+        <div class="travel_plan_conatiner_card_wrapper">
+          <img src="{% static 'plan_other_4.png' %}" class="recommend_container_card_img">
+          <div class="travel_plan_container_card_title_conatiner">
+            <div class="travel_plan_container_card_title_typo">
+              초코와 서울에서 호캉스
+            </div>
+          </div>
+          <div class="travel_plan_container_card_description_typo">
+            2019.12.07 | 1박 2일 | 서울
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div id="footer-div">
+      <p id="footer-message">2021 ANIWHERE from SSWU</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

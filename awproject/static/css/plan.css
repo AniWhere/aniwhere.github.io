@@ -1,0 +1,155 @@
+body {
+	margin: 0 !important;
+	padding: 0 !important;
+	position: relative;
+}
+
+.nav {
+	width: 121px !important;
+	height: 100% !important;
+}
+
+.login_container {
+	display: flex;
+	position: absolute;
+	top: 99px;
+	left: 1240px;
+}
+
+.login_typo {
+	width: 80px;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 19px;
+	color: #333333;
+	margin-right: 18px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.travel_plan_body {
+	width: 100%;
+	display: flex;
+}
+
+.travel_plan_container {
+	width: 1070px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 169px;
+	margin-left: 153px;
+	position: relative;
+}
+
+.travel_plan_container_title_typo {
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 23px;
+	line-height: 40px;
+	color: #000000;
+}
+
+.travel_plan_container_sub_title_typo {
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	line-height: 23px;
+	color: #000000;
+	margin-top: 14px;
+}
+
+.travel_plan_container_add_button {
+	width: 133px;
+	height: 33px;
+	background: rgba(254, 124, 84, 0.7);
+	border-radius: 29.5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 44px;
+	right: 0;
+}
+
+.travel_plan_container_add_button_typo {
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 20px;
+	text-align: center;
+	color: #ffffff;
+}
+
+.travel_plan_conatiner_card_container {
+	width: 1100px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.travel_plan_conatiner_card_wrapper {
+	width: 244px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	margin-right: 30px;
+	margin-top: 17px;
+}
+
+.travel_plan_container_card_img {
+	width: 244px;
+	height: 157px;
+	background: #0003;
+	border-radius: 10px;
+}
+
+.travel_plan_container_card_title_conatiner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 13px;
+}
+
+.travel_plan_container_card_title_typo {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	color: #000000;
+}
+
+.travel_plan_container_title_img {
+	width: 20px;
+	height: 20px;
+	
+}
+
+.travel_plan_container_card_description_typo {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000000;
+	margin-top: 10px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 35px;
+	text-align: center;
+	background-color: #6F6F6F;
+}
+
+#footer-message {
+	color: white;
+	font-size: 10px;
+}
